@@ -4,10 +4,10 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold">
+          <a href="#hero" className="text-2xl font-bold cursor-pointer hover:opacity-80 transition-opacity">
             <span className="text-white">Vyom</span>
             <span className="text-orange-500">Garud</span>
-          </div>
+          </a>
           
           <div className="hidden md:flex items-center gap-8">
             <a href="#hero" className="text-zinc-300 hover:text-orange-500 transition-colors">
@@ -27,9 +27,9 @@ export default function Home() {
             </a>
           </div>
           
-          <button className="px-6 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all hidden md:block">
+          <a href="#contact" className="px-6 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all hidden md:block">
             Get Started
-          </button>
+          </a>
           
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white">
@@ -65,12 +65,12 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay">
-            <button className="px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105">
+            <a href="#capabilities" className="px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105 text-center">
               Explore Solutions
-            </button>
-            <button className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+            </a>
+            <a href="#contact" className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all text-center">
               Contact Us
-            </button>
+            </a>
           </div>
         </div>
       </section>
