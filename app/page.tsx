@@ -1,19 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
+
+// Constants
+const WEB3FORMS_ACCESS_KEY = "d0c56bbd-d17a-45c0-b1e7-7c66ee45eb68";
+const WEB3FORMS_API_URL = "https://api.web3forms.com/submit";
+
+// Types
+interface FormResult {
+  message: string;
+  type: 'idle' | 'loading' | 'success' | 'error';
+}
 
 export default function Home() {
-  const [result, setResult] = useState("");
+  const [formResult, setFormResult] = useState<FormResult>({
+    message: '',
+    type: 'idle'
+  });
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setResult("Sending...");
+    setFormResult({ message: "Sending...", type: 'loading' });
     
     const formData = new FormData(event.currentTarget);
-    formData.append("access_key", "d0c56bbd-d17a-45c0-b1e7-7c66ee45eb68");
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(WEB3FORMS_API_URL, {
         method: "POST",
         body: formData
       });
@@ -21,20 +34,44 @@ export default function Home() {
       const data = await response.json();
       
       if (data.success) {
-        setResult("Message sent successfully! We'll get back to you soon.");
+        setFormResult({
+          message: "Message sent successfully! We'll get back to you soon.",
+          type: 'success'
+        });
         (event.target as HTMLFormElement).reset();
       } else {
-        setResult("Something went wrong. Please try again.");
+        setFormResult({
+          message: "Something went wrong. Please try again.",
+          type: 'error'
+        });
       }
     } catch (error) {
-      setResult("Failed to send message. Please try again.");
+      console.error('Form submission error:', error);
+      setFormResult({
+        message: "Failed to send message. Please try again.",
+        type: 'error'
+      });
+    }
+  };
+
+  const getResultClassName = () => {
+    const baseClasses = "text-center text-lg font-semibold";
+    switch (formResult.type) {
+      case 'success':
+        return `${baseClasses} text-green-400`;
+      case 'loading':
+        return `${baseClasses} text-orange-400`;
+      case 'error':
+        return `${baseClasses} text-red-400`;
+      default:
+        return baseClasses;
     }
   };
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#hero" className="text-2xl font-bold cursor-pointer hover:opacity-80 transition-opacity">
             <span className="text-white">Vyom</span>
@@ -59,22 +96,27 @@ export default function Home() {
             </a>
           </div>
           
-          <a href="#contact" className="px-6 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all hidden md:block">
+          <a href="#contact" className="px-6 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all hidden md:block" aria-label="Get started with VyomGarud">
             Get Started
           </a>
           
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button 
+            className="md:hidden text-white" 
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black"></div>
+      <main>
+        {/* Hero Section */}
+        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero section">
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black" aria-hidden="true"></div>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
@@ -218,55 +260,68 @@ export default function Home() {
             </p>
           </div>
           
-          <form onSubmit={onSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"
                 name="name"
+                id="name"
                 placeholder="Your Name"
                 required
-                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+                aria-label="Your Name"
+                autoComplete="name"
+                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 transition-colors"
               />
               <input
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+                aria-label="Your Email"
+                autoComplete="email"
+                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 transition-colors"
               />
             </div>
             
             <input
               type="text"
               name="subject"
+              id="subject"
               placeholder="Subject"
               required
-              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+              aria-label="Subject"
+              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 transition-colors"
             />
             
             <textarea
               rows={6}
               name="message"
+              id="message"
               placeholder="Your Message"
               required
-              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors resize-none"
+              aria-label="Your Message"
+              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 transition-colors resize-none"
             ></textarea>
             
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105"
+              disabled={formResult.type === 'loading'}
+              className="w-full px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              aria-label="Send message"
             >
-              Send Message
+              {formResult.type === 'loading' ? 'Sending...' : 'Send Message'}
             </button>
             
-            {result && (
-              <p className={`text-center text-lg font-semibold ${result.includes('success') ? 'text-green-400' : result.includes('Sending') ? 'text-orange-400' : 'text-red-400'}`}>
-                {result}
+            {formResult.message && (
+              <p className={getResultClassName()} role="status" aria-live="polite">
+                {formResult.message}
               </p>
             )}
           </form>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="py-12 bg-zinc-950 border-t border-zinc-800">
