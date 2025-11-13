@@ -1,8 +1,47 @@
 export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="text-2xl font-bold">
+            <span className="text-white">Vyom</span>
+            <span className="text-orange-500">Garud</span>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#hero" className="text-zinc-300 hover:text-orange-500 transition-colors">
+              Home
+            </a>
+            <a href="#about" className="text-zinc-300 hover:text-orange-500 transition-colors">
+              About
+            </a>
+            <a href="#capabilities" className="text-zinc-300 hover:text-orange-500 transition-colors">
+              Capabilities
+            </a>
+            <a href="#highlights" className="text-zinc-300 hover:text-orange-500 transition-colors">
+              Highlights
+            </a>
+            <a href="#contact" className="text-zinc-300 hover:text-orange-500 transition-colors">
+              Contact
+            </a>
+          </div>
+          
+          <button className="px-6 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all hidden md:block">
+            Get Started
+          </button>
+          
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-white">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black"></div>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
@@ -37,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-zinc-900">
+      <section id="about" className="py-24 bg-zinc-900">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">About VyomGarud</h2>
@@ -57,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-24 bg-black">
+      <section id="capabilities" className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Capabilities</h2>
@@ -101,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Highlights Section */}
-      <section className="py-24 bg-zinc-900">
+      <section id="highlights" className="py-24 bg-zinc-900">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Key Highlights</h2>
@@ -137,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-black">
+      <section id="contact" className="py-24 bg-black">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
