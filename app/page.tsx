@@ -1,4 +1,36 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setResult("Sending...");
+    
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", "d0c56bbd-d17a-45c0-b1e7-7c66ee45eb68");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setResult("Message sent successfully! We'll get back to you soon.");
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setResult("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setResult("Failed to send message. Please try again.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Navbar */}
@@ -186,29 +218,37 @@ export default function Home() {
             </p>
           </div>
           
-          <form className="space-y-6">
+          <form onSubmit={onSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
+                required
                 className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
+                required
                 className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
               />
             </div>
             
             <input
               type="text"
+              name="subject"
               placeholder="Subject"
+              required
               className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
             />
             
             <textarea
               rows={6}
+              name="message"
               placeholder="Your Message"
+              required
               className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors resize-none"
             ></textarea>
             
@@ -218,6 +258,12 @@ export default function Home() {
             >
               Send Message
             </button>
+            
+            {result && (
+              <p className={`text-center text-lg font-semibold ${result.includes('success') ? 'text-green-400' : result.includes('Sending') ? 'text-orange-400' : 'text-red-400'}`}>
+                {result}
+              </p>
+            )}
           </form>
         </div>
       </section>
