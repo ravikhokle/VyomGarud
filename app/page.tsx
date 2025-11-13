@@ -1,0 +1,219 @@
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black"></div>
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <div className="mb-8 animate-fade-in">
+            <div className="inline-block text-orange-500 text-sm font-semibold tracking-wider uppercase mb-4">
+              Next-Gen UAV Systems
+            </div>
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-slide-up">
+            <span className="text-white">Vyom</span>
+            <span className="text-orange-500">Garud</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto animate-slide-up-delay">
+            Precision Engineering. Advanced Autonomy. Military-Grade Reliability.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay">
+            <button className="px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105">
+              Explore Solutions
+            </button>
+            <button className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-24 bg-zinc-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">About VyomGarud</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-zinc-300 leading-relaxed text-center">
+              VyomGarud is at the forefront of unmanned aerial vehicle (UAV) technology, 
+              delivering cutting-edge drone systems engineered for precision, reliability, 
+              and advanced autonomy. Our mission is to empower defense and commercial sectors 
+              with innovative aerial solutions that push the boundaries of what's possible 
+              in autonomous flight systems.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Capabilities</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-800 hover:border-orange-500 transition-all transform hover:scale-105">
+              <div className="text-orange-500 text-4xl mb-4">🛸</div>
+              <h3 className="text-xl font-bold mb-3">Autonomous Navigation</h3>
+              <p className="text-zinc-400">
+                Advanced AI-powered flight systems with real-time obstacle avoidance and intelligent path planning.
+              </p>
+            </div>
+            
+            <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-800 hover:border-orange-500 transition-all transform hover:scale-105">
+              <div className="text-orange-500 text-4xl mb-4">📡</div>
+              <h3 className="text-xl font-bold mb-3">Surveillance & Recon</h3>
+              <p className="text-zinc-400">
+                High-resolution imaging and thermal sensing for strategic intelligence gathering.
+              </p>
+            </div>
+            
+            <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-800 hover:border-orange-500 transition-all transform hover:scale-105">
+              <div className="text-orange-500 text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold mb-3">Long Endurance</h3>
+              <p className="text-zinc-400">
+                Extended flight times with efficient power management and quick-swap battery systems.
+              </p>
+            </div>
+            
+            <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-800 hover:border-orange-500 transition-all transform hover:scale-105">
+              <div className="text-orange-500 text-4xl mb-4">🛡️</div>
+              <h3 className="text-xl font-bold mb-3">Military-Grade Build</h3>
+              <p className="text-zinc-400">
+                Ruggedized construction with weather resistance for extreme operational conditions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights Section */}
+      <section className="py-24 bg-zinc-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Key Highlights</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8">
+              <div className="text-5xl font-bold text-orange-500 mb-3">99.9%</div>
+              <h3 className="text-xl font-semibold mb-2">Mission Success Rate</h3>
+              <p className="text-zinc-400">
+                Proven reliability across thousands of operational hours
+              </p>
+            </div>
+            
+            <div className="text-center p-8">
+              <div className="text-5xl font-bold text-orange-500 mb-3">24/7</div>
+              <h3 className="text-xl font-semibold mb-2">Operational Support</h3>
+              <p className="text-zinc-400">
+                Round-the-clock technical assistance and maintenance
+              </p>
+            </div>
+            
+            <div className="text-center p-8">
+              <div className="text-5xl font-bold text-orange-500 mb-3">50+</div>
+              <h3 className="text-xl font-semibold mb-2">Active Deployments</h3>
+              <p className="text-zinc-400">
+                Serving defense and commercial clients worldwide
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-zinc-400">
+              Ready to elevate your operations? Contact us for a consultation.
+            </p>
+          </div>
+          
+          <form className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+              />
+            </div>
+            
+            <input
+              type="text"
+              placeholder="Subject"
+              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors"
+            />
+            
+            <textarea
+              rows={6}
+              placeholder="Your Message"
+              className="w-full px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-orange-500 focus:outline-none transition-colors resize-none"
+            ></textarea>
+            
+            <button
+              type="submit"
+              className="w-full px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-zinc-950 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <h3 className="text-2xl font-bold">
+                <span className="text-white">Vyom</span>
+                <span className="text-orange-500">Garud</span>
+              </h3>
+              <p className="text-zinc-400 mt-2">Next-Gen UAV Systems</p>
+            </div>
+            
+            <div className="flex gap-6">
+              <a href="#" className="text-zinc-400 hover:text-orange-500 transition-colors">
+                LinkedIn
+              </a>
+              <a href="#" className="text-zinc-400 hover:text-orange-500 transition-colors">
+                Twitter
+              </a>
+              <a href="#" className="text-zinc-400 hover:text-orange-500 transition-colors">
+                GitHub
+              </a>
+            </div>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-zinc-800 text-center text-zinc-400">
+            <p>&copy; 2025 VyomGarud. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
