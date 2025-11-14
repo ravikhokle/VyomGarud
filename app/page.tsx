@@ -116,7 +116,20 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero section">
-          <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black" aria-hidden="true"></div>
+          {/* Video Background */}
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/video/drone.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+          
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
@@ -170,8 +183,22 @@ export default function Home() {
       </section>
 
       {/* Capabilities Section */}
-      <section id="capabilities" className="py-24 bg-black">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="capabilities" className="relative py-24 bg-black overflow-hidden">
+        {/* Video Background */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/road.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Capabilities</h2>
             <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
