@@ -9,8 +9,6 @@ A modern, responsive landing page for VyomGarud - Next-Generation UAV Systems po
 - [Project Structure](#project-structure)
 - [Design Notes](#design-notes)
 - [Technologies Used](#technologies-used)
-- [Deployment](#deployment)
-- [Contact](#contact)
 
 ## 🛠️ Getting Started
 
